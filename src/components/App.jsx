@@ -21,25 +21,24 @@ export const App = () => {
   };
 
   const forSubmitHandler = ({ name, number }) => {
-    setContacts(prevContacts => {
-      const nameContact = prevContacts.find(
-        c => c.name.toLowerCase() === name.toLowerCase()
-      );
-      if (nameContact) {
-        alert(`${name} is already in contact`);
-        return;
-      }
-      setContacts([
-        {
-          id: nanoid(),
-          name,
-          number,
-        },
-        ...contacts,
-      ]);
+    const nameContact = contacts.find(
+      c => c.name.toLowerCase() === name.toLowerCase()
+    );
+    if (nameContact) {
+      alert(`${name} is already in contact`);
+      return;
+    }
 
-      console.log(contacts);
-    });
+    setContacts([
+      {
+        id: nanoid(),
+        name,
+        number,
+      },
+      ...contacts,
+    ]);
+
+    console.log(contacts);
   };
 
   const changeFilter = e => {
